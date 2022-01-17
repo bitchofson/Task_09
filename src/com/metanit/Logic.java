@@ -33,11 +33,11 @@ public class Logic {
         for (int i = 0; i < max; i++) {
 
             if (list1.get(i) % 2 == 0) {
-                if (containsLogic(list1, list2, i, 1)) result.add(list1.get(i));
+                if (containsLogic(list1, list2, i)) result.add(list1.get(i));
             }
 
             if (list2.get(i) % 2 != 0) {
-                if (containsLogic(list1, list2, i, 2)) result.add(list2.get(i));
+                if (containsLogic(list2, list1, i)) result.add(list2.get(i));
             }
 
         }
@@ -45,27 +45,18 @@ public class Logic {
         return result;
     }
 
-    public static boolean containsLogic(List <Integer> list1, List <Integer> list2, int i, int key) {
+    public static boolean containsLogic(List <Integer> list1, List <Integer> list2, int i) {
 
-        if (key == 1) {
             for (int j = 0; j < list2.size(); j++) {
                 if (list1.get(i) == list2.get(j)) return false;
                 else continue;
             }
-
-        } else {
-            for (int j = 0; j < list1.size(); j++) {
-                if (list2.get(i) == list1.get(j)) return false;
-                else continue;
-            }
-        }
 
        return true;
     }
 
     public static void sort(List<Integer> list) {
 
-    
         int N = list.size();
         int t = 0;
 
@@ -77,10 +68,6 @@ public class Logic {
                     list.set(i, list.get(j));
                     list.set(j, t);
                 }
-
-
-
-
 
     }
 }
